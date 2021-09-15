@@ -22,6 +22,7 @@ import com.sismics.rest.util.ValidationUtil;
 
 import javax.json.*;
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.StringReader;
 import java.util.List;
@@ -32,6 +33,7 @@ import java.util.List;
  * @author bgamard
  */
 @Path("/routemodel")
+@Consumes(MediaType.TEXT_PLAIN)
 public class RouteModelResource extends BaseResource {
     /**
      * Returns the list of all route models.
