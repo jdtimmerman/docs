@@ -1,48 +1,5 @@
-<p class="well-sm" ng-bind-html="document.description"></p>
-<dl class="dl-horizontal">
-  <dt ng-if="document.subject">{{ 'document.subject' | translate }}</dt>
-  <dd ng-if="document.subject">{{ document.subject }}</dd>
-  <dt ng-if="document.identifier">{{ 'document.identifier' | translate }}</dt>
-  <dd ng-if="document.identifier">{{ document.identifier }}</dd>
-  <dt ng-if="document.publisher">{{ 'document.publisher' | translate }}</dt>
-  <dd ng-if="document.publisher">{{ document.publisher }}</dd>
-  <dt ng-if="document.format">{{ 'document.format' | translate }}</dt>
-  <dd ng-if="document.format">{{ document.format }}</dd>
-  <dt ng-if="document.source">{{ 'document.source' | translate }}</dt>
-  <dd ng-if="document.source">{{ document.source }}</dd>
-  <dt ng-if="document.type">{{ 'document.type' | translate }}</dt>
-  <dd ng-if="document.type">{{ document.type }}</dd>
-  <dt ng-if="document.coverage">{{ 'document.coverage' | translate }}</dt>
-  <dd ng-if="document.coverage">{{ document.coverage }}</dd>
-  <dt ng-if="document.rights">{{ 'document.rights' | translate }}</dt>
-  <dd ng-if="document.rights">{{ document.rights }}</dd>
-  <dt>{{ 'document.contributors' | translate }}</dt>
-  <dd>
-    <span ng-repeat="contributor in document.contributors">
-      <a class="btn btn-xs" href="#/user/{{ contributor.username }}">
-        <span class="fas fa-user"></span>
-        {{ contributor.username }}
-      </a>
-    </span>
-  </dd>
-  <dt ng-if="document.relations.length > 0">{{ 'document.relations' | translate }}</dt>
-  <dd ng-if="document.relations.length > 0">
-    <span ng-repeat="relation in document.relations">
-      <span class="btn btn-link btn-xs">
-        <a href="#/document/view/{{ relation.id }}">
-          {{ relation.title }}
-        </a>
-      </span>
-    </span>
-  </dd>
+<p class="well-sm" ng-bind-html="document.description" ng-if="document.description"></p>
 
-  <dt ng-if="false" ng-repeat-start="meta in document.metadata"></dt>
-  <dt ng-if="meta.value != null">{{ meta.name }}</dt>
-  <dd ng-if="meta.value != null && (meta.type == 'STRING' || meta.type == 'INTEGER' || meta.type == 'FLOAT')">{{ meta.value }}</dd>
-  <dd ng-if="meta.value != null && meta.type == 'DATE'">{{ meta.value | date: dateFormat }}</dd>
-  <dd ng-if="meta.value != null && meta.type == 'BOOLEAN'">{{ meta.value ? 'yes' : 'no' | translate }}</dd>
-  <dd ng-if="false" ng-repeat-end></dd>
-</dl>
 
 <!-- Display mode (list or grid) -->
 <div class="btn-group mt-10 mb-10 pull-right">

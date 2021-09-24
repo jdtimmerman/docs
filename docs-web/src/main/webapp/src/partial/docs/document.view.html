@@ -79,6 +79,7 @@
         <li ng-class="{ active: $state.current.name == 'document.view.workflow' }" ng-show="routeCount > 0">
           <a href="#/document/view/{{ document.id }}/workflow">
             <span class="fas fa-random"></span> {{ 'document.view.workflow' | translate }}
+            a-{{$rootScope}}-b
           </a>
         </li>
         <li ng-class="{ active: $state.current.name == 'document.view.permissions' }">
@@ -95,6 +96,7 @@
       <div ui-view="tab"></div>
     </div>
     <div class="col-md-3">
+
       <div ng-show="document.route_step">
         <p class="page-header page-header-side">
           <span class="fas fa-random"></span>
@@ -129,6 +131,59 @@
             </span>
           </p>
         </div>
+      </div>
+
+
+      <p class="page-header page-header-side">
+        <span class="fas fa-info-circle"></span>
+        {{ 'document.view.metadata' | translate }}
+      </p>
+
+
+      <div>
+        <dl class="">
+          <dt ng-if="document.subject">{{ 'document.subject' | translate }}</dt>
+          <dd ng-if="document.subject">{{ document.subject }}</dd>
+          <dt ng-if="document.identifier">{{ 'document.identifier' | translate }}</dt>
+          <dd ng-if="document.identifier">{{ document.identifier }}</dd>
+          <dt ng-if="document.publisher">{{ 'document.publisher' | translate }}</dt>
+          <dd ng-if="document.publisher">{{ document.publisher }}</dd>
+          <dt ng-if="document.format">{{ 'document.format' | translate }}</dt>
+          <dd ng-if="document.format">{{ document.format }}</dd>
+          <dt ng-if="document.source">{{ 'document.source' | translate }}</dt>
+          <dd ng-if="document.source">{{ document.source }}</dd>
+          <dt ng-if="document.type">{{ 'document.type' | translate }}</dt>
+          <dd ng-if="document.type">{{ document.type }}</dd>
+          <dt ng-if="document.coverage">{{ 'document.coverage' | translate }}</dt>
+          <dd ng-if="document.coverage">{{ document.coverage }}</dd>
+          <dt ng-if="document.rights">{{ 'document.rights' | translate }}</dt>
+          <dd ng-if="document.rights">{{ document.rights }}</dd>
+          <dt ng-if="document.relations.length > 0">{{ 'document.relations' | translate }}</dt>
+          <dd ng-if="document.relations.length > 0">
+            <span ng-repeat="relation in document.relations">
+              <span class="btn btn-link btn-xs">
+                <a href="#/document/view/{{ relation.id }}">
+                  {{ relation.title }}
+                </a>
+              </span>
+            </span>
+          </dd>
+          <dt>{{ 'document.contributors' | translate }}</dt>
+          <dd>
+            <span ng-repeat="contributor in document.contributors">
+              <a class="btn btn-xs" href="#/user/{{ contributor.username }}">
+                <span class="fas fa-user"></span>
+                {{ contributor.username }}
+              </a>
+            </span>
+          </dd>
+          <dt ng-if="false" ng-repeat-start="meta in document.metadata"></dt>
+          <dt ng-if="meta.value != null">{{ meta.name }}</dt>
+          <dd ng-if="meta.value != null && (meta.type == 'STRING' || meta.type == 'INTEGER' || meta.type == 'FLOAT')">{{ meta.value }}</dd>
+          <dd ng-if="meta.value != null && meta.type == 'DATE'">{{ meta.value | date: dateFormat }}</dd>
+          <dd ng-if="meta.value != null && meta.type == 'BOOLEAN'">{{ meta.value ? 'yes' : 'no' | translate }}</dd>
+          <dd ng-if="false" ng-repeat-end></dd>
+        </dl>
       </div>
 
       <p class="page-header page-header-side">

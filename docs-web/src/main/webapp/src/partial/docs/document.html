@@ -250,13 +250,18 @@
 
         <tr ng-click="viewDocument(document.id)" ng-repeat="document in documents" ng-class="{ active: $stateParams.id == document.id }">
           <td colspan="2">
-            {{ document.title }} ({{ document.file_count }})
+            {{ document.title }}
+            <span class="text-muted">({{ document.file_count }})</span>
             <span class="fas fa-share" ng-if="document.shared" uib-tooltip="{{ 'document.shared' | translate }}"></span>
             <span class="fas fa-random" ng-if="document.active_route" uib-tooltip="{{ document.current_step_name }}"></span>
-            <a href="#/document/view/{{ document.id }}" target="_blank" ng-click="$event.stopPropagation()"><span class="fas fa-link"></span></a>
 
-            <div class="pull-right text-muted small" uib-tooltip="{{ 'document.last_updated' | translate: { date: document.update_date } }}">
-              {{ document.create_date | timeAgo: dateFormat }}
+            <div class="pull-right text-muted small">
+              <span  uib-tooltip="{{ 'document.last_updated' | translate: { date: document.update_date } }}">
+                {{ document.create_date | timeAgo: dateFormat }}
+              </span>
+              <a href="#/document/view/{{ document.id }}" target="_blank" ng-click="$event.stopPropagation()">
+                <span class="fas fa-link small"></span>
+              </a>
             </div>
 
             <div class="tags small">

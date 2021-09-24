@@ -103,6 +103,7 @@
       "no_comments": "No comments on this document yet",
       "add_comment": "Add a comment",
       "error_loading_comments": "Error loading comments",
+      "metadata": "Metadata",
       "workflow_current": "Current workflow step",
       "workflow_comment": "Add a workflow comment",
       "workflow_validated_title": "Workflow step validated",
