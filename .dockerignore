@@ -1,0 +1,6 @@
+*
+!docs-core
+!docs-web
+!docs-web-common
+!pom.xml
+!docs.xml
